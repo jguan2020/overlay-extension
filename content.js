@@ -8,7 +8,7 @@ function hexToRGBA(hex, a=0.1){
 
 chrome.storage.local.get('overlayColor',({overlayColor})=>
     {
-        if(overlayColor){            
+        if(overlayColor){
             const rgba = hexToRGBA(overlayColor);
             document.documentElement.style.setProperty('--overlay-color',rgba);
         }

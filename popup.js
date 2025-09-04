@@ -16,7 +16,7 @@ chrome.storage.local.get('overlayColor',({overlayColor})=>
         if(overlayColor){
             colorPicker.value = overlayColor;
             document.documentElement.style.setProperty('--thumb-color',overlayColor);
-            
+            colorString.textContent = overlayColor.toString();
         }
         
     }

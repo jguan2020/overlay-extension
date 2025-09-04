@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <div class="pageWrap">
+  <div class="colorAlphaBox">
+
+  <div class="colorPicker">
+  <img src="images/color-wheel.svg.png" id="colorWheel">
+  <input type="color" value="#ffffff" id="color">
+  <div id="colorString"></div>
+  </div>
+
+  
+  <div class="alphaBox">
+
+  <div class="alphaSlider">
+  <input type="range" id="alphaValue" min="0" max="100" value="10">
+  <div id="alphaText"></div>
+  </div>
+
+  <div class="alphaTitle" id="opacity">Opacity</label>
+
+    <div class="flexOptions">
+        <input type="button" value="Warm">
+        <input type="button" value="Cool">
+        <input type="button" value="">
+        <input type="button">
+    </div>
+        
+  </div>
+  </div>
+</div>
+
+
+  <script src="popup.js"></script>
+</body>
+</html>

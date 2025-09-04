@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 18px;
+  color: #333;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alphaSlider{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    padding:0 8px;
+}
+
+.alphaBox{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+}
+
+#alphaText{
+    font-size:16px;
+}
+#alphaValue{
+    width:100px;
+    display:block;
+}
+
+#colorWheel {
+    height:19px;
+    width:19px;
+}
+
+.colorPicker {
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-left:10px;
+    
+}
+#opacity {
+    font-size: 16px;
+}
+
+#color {
+-webkit-appearance: none; 
+appearance: none;
+border: 2px solid transparent;
+border-radius: 6px;
+background: 
+linear-gradient(#fff, #fff) padding-box, 
+conic-gradient(red, orange, yellow, green, cyan, blue, violet, red) border-box;
+}
+
+
+::-webkit-color-swatch-wrapper { padding: 2px; } /* gap thickness */
+::-webkit-color-swatch { border: 0; border-radius: 6px; }
+
+
+input[type="range"]::-webkit-slider-thumb { 
+      -webkit-appearance: none;
+      background: var(--thumb-color, rgba(0, 122, 255)); 
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: -1px; /* Adjust vertical position to align with track */
+      outline: 2px ridge #000000;
+}
+
+input[type="range"]::-webkit-slider-runnable-track { 
+      background: #ddd; 
+      height: 8px;
+      border-radius: 4px;
+}
+
+input[type="range"] {
+      -webkit-appearance: none; 
+      appearance: none;
+      background: transparent; 
+}
+
+.colorAlphaBox{
+    display:flex;
+    gap:10px;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+
+
+body {
+    background: linear-gradient(135deg, #a37be4, #e58fc9);
+}
+
+#colorString {
+    font-size: 16px;
+}

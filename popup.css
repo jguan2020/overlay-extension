@@ -103,9 +103,15 @@ input[type="range"] {
 
 
 body {
-    background: linear-gradient(135deg, #a37be4, #e58fc9);
+    background: linear-gradient(135deg, var(--gradient-color1,#a37be4), var(--gradient-color2,#e58fc9));
 }
 
 #colorString {
     font-size: 16px;
+}
+
+.flexOptions {
+  display: flex;
+  margin-top: 5px;
+  gap:5px;
 }

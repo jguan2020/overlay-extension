@@ -88,7 +88,8 @@ chrome.storage.local.get('overlayColor',({overlayColor})=>
 chrome.storage.local.get('opacity', ({opacity})=>
     {
         if(opacity){
-            alphaValue.value = opacity;
+            const opacityRounded = Math.round(opacity*100)/100;
+            alphaValue.value = opacityRounded;
             alphaText.textContent = (Math.round(opacity*100)).toString() + '%';
         }
     }
@@ -96,8 +97,9 @@ chrome.storage.local.get('opacity', ({opacity})=>
 
 alphaValue.addEventListener('input', opacity=>
 {
+    const opacityRounded = Math.round(opacity.target.value*100)/100;
     chrome.storage.local.set({
-        opacity:opacity.target.value
+        opacity:opacityRounded
     });
     alphaText.textContent = (Math.round(opacity.target.value*100)).toString() + '%';
 }
@@ -129,8 +131,9 @@ chrome.storage.onChanged.addListener((color,storageType)=>{
 
 chrome.storage.onChanged.addListener((color,storageType)=>{
     if(storageType==='local'&&color.opacity){
+        const opacityRounded = Math.round(color.opacity.newValue*100)/100
         alphaText.textContent = (Math.round(color.opacity.newValue*100)).toString() + '%';
-        alphaValue.value = Math.round(color.opacity.newValue*100)/100;
+        alphaValue.value = opacityRounded;
     }
 }
 );

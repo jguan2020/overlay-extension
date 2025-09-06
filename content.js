@@ -28,7 +28,8 @@ chrome.storage.local.get('overlayColor',({overlayColor})=>
 chrome.storage.local.get('opacity',({opacity})=>
     {
         if(opacity){
-            document.documentElement.style.setProperty('--overlay-opacity',opacity);
+            const opacityRounded = Math.round(opacity*100)/100;
+            document.documentElement.style.setProperty('--overlay-opacity',opacityRounded);
         }
     }
 );
@@ -43,7 +44,8 @@ chrome.storage.onChanged.addListener((color,storageType)=>{
 
 chrome.storage.onChanged.addListener((color,storageType)=>{
     if(storageType==='local'&&color.opacity){
-        document.documentElement.style.setProperty('--overlay-opacity',color.opacity.newValue);
+        const opacityRounded = Math.round(color.opacity.newValue*100)/100;
+        document.documentElement.style.setProperty('--overlay-opacity',opacityRounded);
     }
 }
 );

@@ -2,6 +2,11 @@ const colorPicker = document.getElementById('color');
 const alphaValue = document.getElementById('alphaValue');
 const alphaText = document.getElementById('alphaText');
 const colorString = document.getElementById('colorString');
+const warmButton = document.getElementById('warmButton');
+const coolButton = document.getElementById('coolButton');
+const readButton = document.getElementById('readButton');
+const mintButton = document.getElementById('mintButton');
+
 
 function hexToRGBA(hex, a=1){
     const r = parseInt(hex.substring(1,3),16);
@@ -55,8 +60,8 @@ function findHSL2(H,S,L){
     return {H2:H2, S2:S2, L2:L2};
 }
 
-function HSLToCss({H2,S2,L2}){
-    return "hsl("+(Math.round(H2)).toString()+ " "+(Math.round(S2*100)).toString()+"% "+(Math.round(L2*100)).toString()+"%)";
+function HSLToCss({H2,S2,L2},a=1){
+    return "hsl("+(Math.round(H2)).toString()+ " "+(Math.round(S2*100)).toString()+"% "+(Math.round(L2*100)).toString()+"% / " + a.toString()+")";
 }
 
 
@@ -70,7 +75,7 @@ chrome.storage.local.get('overlayColor',({overlayColor})=>
             document.documentElement.style.setProperty('--thumb-color',overlayColor);
             const HSL1 = hexToHSL(overlayColor);
             const HSL2 = findHSL2(HSL1.H,HSL1.S,HSL1.L);
-            const color2 = HSLToCss(HSL2);
+            const color2 = HSLToCss(HSL2,0.1);
             console.log(color2);
             document.documentElement.style.setProperty('--gradient-color1',overlayColor);
             document.documentElement.style.setProperty('--gradient-color2',color2);
@@ -114,8 +119,7 @@ chrome.storage.onChanged.addListener((color,storageType)=>{
         document.documentElement.style.setProperty('--thumb-color',rgba);
         const HSL1 = hexToHSL(color.overlayColor.newValue);
         const HSL2 = findHSL2(HSL1.H,HSL1.S,HSL1.L);
-        const color2 = HSLToCss(HSL2);
-        console.log(color2);
+        const color2 = HSLToCss(HSL2,0.1);
         document.documentElement.style.setProperty('--gradient-color1',color.overlayColor.newValue);
         document.documentElement.style.setProperty('--gradient-color2',color2);
         colorString.textContent = color.overlayColor.newValue.toString();
@@ -123,5 +127,43 @@ chrome.storage.onChanged.addListener((color,storageType)=>{
 }
 );
 
+chrome.storage.onChanged.addListener((color,storageType)=>{
+    if(storageType==='local'&&color.opacity){
+        alphaText.textContent = (Math.round(color.opacity.newValue*100)).toString() + '%';
+        alphaValue.value = Math.round(color.opacity.newValue*100)/100;
+    }
+}
+);
 
 
+warmButton.addEventListener('click', ()=>{
+    chrome.storage.local.set({
+        overlayColor:"#FFC107",
+        opacity:0.1
+});
+    colorPicker.value = "#FFC107";
+});
+
+coolButton.addEventListener('click', ()=>{
+    chrome.storage.local.set({
+        overlayColor:"#42A5F5",
+        opacity:0.1
+});
+    colorPicker.value = "#42A5F5";
+});
+
+readButton.addEventListener('click', ()=>{
+    chrome.storage.local.set({
+        overlayColor:"#A98256",
+        opacity:0.1
+});
+    colorPicker.value = "#A98256";
+});
+
+mintButton.addEventListener('click', ()=>{
+    chrome.storage.local.set({
+        overlayColor:"#66BB6A",
+        opacity:0.1
+});
+    colorPicker.value = "#66BB6A";
+});

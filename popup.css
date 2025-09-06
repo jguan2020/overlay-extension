@@ -38,6 +38,7 @@ button {
 #alphaValue{
     width:100px;
     display:block;
+    
 }
 
 #colorWheel {
@@ -54,6 +55,8 @@ button {
 }
 #opacity {
     font-size: 16px;
+    text-align: left;
+    margin-left: 35px;
 }
 
 #color {
@@ -67,7 +70,7 @@ conic-gradient(red, orange, yellow, green, cyan, blue, violet, red) border-box;
 }
 
 
-::-webkit-color-swatch-wrapper { padding: 2px; } /* gap thickness */
+::-webkit-color-swatch-wrapper { padding: 2px; } 
 ::-webkit-color-swatch { border: 0; border-radius: 6px; }
 
 
@@ -78,7 +81,17 @@ input[type="range"]::-webkit-slider-thumb {
       height: 10px;
       border-radius: 50%;
       margin-top: -1px; /* Adjust vertical position to align with track */
-      outline: 2px ridge #000000;
+      outline: 1px ridge #000000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  opacity: 0.7
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  opacity: 0.5;
 }
 
 input[type="range"]::-webkit-slider-runnable-track { 
@@ -111,7 +124,42 @@ body {
 }
 
 .flexOptions {
-  display: flex;
-  margin-top: 5px;
-  gap:5px;
+    display: flex;
+    margin-top: 5px;
+    gap:5px;
 }
+
+#warmButton {
+    border: 1px solid #FFC107;
+    background: linear-gradient(180deg, #ebdebb, #FFC107);
+}
+
+#coolButton {
+    border: 1px solid #42A5F5;
+    background: linear-gradient(180deg, #c7dcee, #42A5F5);
+}
+
+#readButton {
+    border: 1px solid #A98256;
+    background: linear-gradient(180deg, #eed4b5, #A98256);
+}
+
+#mintButton {
+    border: 1px solid #66BB6A;
+    background: linear-gradient(180deg, #b4ebb7, #66BB6A);
+}
+
+.presetButton {
+    transition: transform 50ms ease;
+    will-change: transform;
+    font-weight: 400;
+}
+.presetButton:active {
+    transform: translateY(1px);
+}
+
+.presetButton:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,.18);
+    filter: brightness(1.05) saturate(1.05);
+}
+

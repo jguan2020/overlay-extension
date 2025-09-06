@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Garamond, Arial, sans-serif;
   width: 200px;
   padding: 10px;
   text-align: center;
@@ -73,6 +73,10 @@ conic-gradient(red, orange, yellow, green, cyan, blue, violet, red) border-box;
 ::-webkit-color-swatch-wrapper { padding: 2px; } 
 ::-webkit-color-swatch { border: 0; border-radius: 6px; }
 
+input[type="color"]:hover{
+    box-shadow: 0 6px 15px rgba(0,0,0,.28), 0 0 0 3px rgba(255,255,255,.75)
+}
+
 
 input[type="range"]::-webkit-slider-thumb { 
       -webkit-appearance: none;
@@ -80,7 +84,7 @@ input[type="range"]::-webkit-slider-thumb {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      margin-top: -1px; /* Adjust vertical position to align with track */
+      margin-top: -1px; /* half width + margin-top = border-radius */
       outline: 1px ridge #000000;
       box-shadow: 0 4px 10px rgba(0,0,0,0.22);
 }

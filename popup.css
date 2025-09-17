@@ -167,3 +167,128 @@ body {
     filter: brightness(1.05) saturate(1.05);
 }
 
+
+
+
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+    --toggle-scale: 0.9;
+    position: relative;
+    display: inline-block;
+    width: calc(60px * var(--toggle-scale));
+    height: calc(34px * var(--toggle-scale));
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: calc(26px * var(--toggle-scale));
+    width: calc(26px * var(--toggle-scale));
+    left: calc(4px * var(--toggle-scale));
+    bottom: calc(4px * var(--toggle-scale));
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(calc(26px * var(--toggle-scale)));
+    -ms-transform: translateX(calc(26px * var(--toggle-scale)));
+    transform: translateX(calc(26px * var(--toggle-scale)));
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: calc(34px * var(--toggle-scale));
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider.no-anim,
+.slider.no-anim:before {
+    transition: none
+}
+
+
+
+
+
+
+.slider {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;      
+  color: white;
+}
+
+
+.slider::after {
+  flex: 1 1 50%;
+  text-align: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+
+
+input:checked + .slider .slider-text-on {
+  opacity: 1;
+}
+
+input:checked + .slider .slider-text-off {
+  opacity: 0;
+}
+
+
+input:not(:checked) + .slider .slider-text-on { 
+    opacity: 0; 
+}
+
+
+.slider-text {
+  flex: 1;
+  text-align: center;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.slider-text-on { opacity: 0; }
+.slider-text-off { opacity: 1; }
+
+

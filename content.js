@@ -1,3 +1,14 @@
+chrome.storage.local.get({isEnabled:true}, ({isEnabled})=>
+{
+    document.documentElement.dataset.enabled = isEnabled ? 'true' : 'false';
+});
+
+chrome.storage.onChanged.addListener((toggle, storageType) =>{
+    if(storageType==='local' && toggle.isEnabled){
+        document.documentElement.dataset.enabled = toggle.isEnabled.newValue ? 'true' : 'false';
+    }
+});
+
 function hexToRGBA(hex, a=0.1){
     const r = parseInt(hex.substring(1,3),16);
     const g = parseInt(hex.substring(3,5),16);

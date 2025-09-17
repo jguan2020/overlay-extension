@@ -6,3 +6,7 @@ html::before {
     z-index: 2147483647; 
     pointer-events: none; 
 }
+
+html[data-enabled = "false"]::before {
+    display:none
+}

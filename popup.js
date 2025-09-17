@@ -1,3 +1,21 @@
+const onOffToggle = document.getElementById('on-off-toggle');
+const slider = onOffToggle.nextElementSibling;
+
+chrome.storage.local.get({isEnabled:true}, ({isEnabled}) => {
+    slider.classList.add('no-anim');
+    onOffToggle.checked = isEnabled;
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => slider.classList.remove('no-anim'));
+    });
+});
+
+onOffToggle.addEventListener('change', isEnabled => {
+    chrome.storage.local.set({isEnabled:isEnabled.target.checked});
+});
+
+
+
+
 const colorPicker = document.getElementById('color');
 const alphaValue = document.getElementById('alphaValue');
 const alphaText = document.getElementById('alphaText');
@@ -6,6 +24,7 @@ const warmButton = document.getElementById('warmButton');
 const coolButton = document.getElementById('coolButton');
 const readButton = document.getElementById('readButton');
 const mintButton = document.getElementById('mintButton');
+
 
 
 function hexToRGBA(hex, a=1){
@@ -81,6 +100,12 @@ chrome.storage.local.get('overlayColor',({overlayColor})=>
             document.documentElement.style.setProperty('--gradient-color2',color2);
             colorString.textContent = overlayColor.toString();
         }
+        else{
+            chrome.storage.local.set({
+                overlayColor: "#26A69A",
+            });
+            colorPicker.value = "#26A69A";
+        }
         
     }
 );
@@ -91,6 +116,11 @@ chrome.storage.local.get('opacity', ({opacity})=>
             const opacityRounded = Math.round(opacity*100)/100;
             alphaValue.value = opacityRounded;
             alphaText.textContent = (Math.round(opacity*100)).toString() + '%';
+        }
+        else{
+            chrome.storage.local.set({
+                opacity:0.1
+            });
         }
     }
 );
@@ -170,3 +200,4 @@ mintButton.addEventListener('click', ()=>{
 });
     colorPicker.value = "#66BB6A";
 });
+

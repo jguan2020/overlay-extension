@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Tintify",
-  "version": "1.0",
-  "description": "A lightweight extension that adds a screen overlay tint",
+  "version": "1.0.1",
+  "description": "A lightweight extension that adds a screen overlay tint change added",
   "permissions": ["storage"],
   "host_permissions":["<all_urls>"],
   "content_scripts":[{ "matches": ["<all_urls>"], "css": ["content.css"], "run_at": "document_start" },
